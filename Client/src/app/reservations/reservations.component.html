@@ -1,0 +1,32 @@
+<mat-tab-group>
+  <!-- Tabs for each lab -->
+  <mat-tab *ngFor="let lab of labs" [label]="lab.name">
+    <div class="abc">
+      <h2>{{ lab.name }}</h2>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let booking of bookings">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ booking.startTime | date:'shortTime' }}   - {{ booking.endTime | date:'shortTime' }} </mat-panel-title>
+            <mat-panel-description> {{ booking.reason }} </mat-panel-description>
+          </mat-expansion-panel-header>
+        
+          <mat-form-field>
+            <input matInput placeholder="First name">
+          </mat-form-field>
+        
+          <mat-form-field>
+            <input matInput placeholder="Age">
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+    </div>
+
+
+
+  </mat-tab>
+</mat-tab-group>
+
+
+  
