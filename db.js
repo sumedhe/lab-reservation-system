@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// Database connect
+// Database connection
 mongoose.connect('mongodb://localhost:27017/lab-reservation-system', (err) => {
     if (!err) {
         console.log("Mongodb connection succeeded")
