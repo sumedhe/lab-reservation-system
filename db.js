@@ -9,4 +9,4 @@ mongoose.connect('mongodb://localhost:27017/lab-reservation-system', (err) => {
     }
 });
 
-module.exports = mongoose;
+module.exports = mongoose
