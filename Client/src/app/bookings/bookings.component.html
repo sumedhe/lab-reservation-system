@@ -9,15 +9,8 @@
             <mat-panel-title> {{ booking.startTime | date:'shortTime' }}   - {{ booking.endTime | date:'shortTime' }} </mat-panel-title>
             <mat-panel-description> {{ booking.reason }} </mat-panel-description>
           </mat-expansion-panel-header>
-        
-          <!-- <mat-form-field>
-            <input matInput placeholder="First name">
-          </mat-form-field>
-        
-          <mat-form-field>
-            <input matInput placeholder="Age">
-          </mat-form-field> -->
 
+          <!-- Booking form -->
           <form class="example-form">
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Your name" disabled value="Sumedhe Dissanayake">
@@ -33,21 +26,23 @@
                 <textarea matInput placeholder="Reason" minRows="6"></textarea>
               </mat-form-field><br>
 
-              <table class="example-full-width"> 
-                <td>
-                    <mat-form-field>
-                        <input matInput placeholder="From" value="">
-                      </mat-form-field>
+              <table > 
+                <td class="example-full-width">
+                  <mat-form-field>
+                      <input matInput placeholder="From" value="">
+                  </mat-form-field>
                 </td>
-                <td>
-                    <mat-form-field>
+                <td class="example-full-width">
+                  <mat-form-field>
                         <input matInput placeholder="To" value="">
                   </mat-form-field><br>
                 </td>
               </table>
 
-            </form>
+              <button mat-raised-button color="primary">Save</button>
+              <button mat-raised-button color="primary">Cancel</button>
 
+            </form>
 
         </mat-expansion-panel>
       </mat-accordion>

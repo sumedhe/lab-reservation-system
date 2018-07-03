@@ -35,13 +35,18 @@ mat-drawer-content {
     right: 30px;
     bottom: 50px;
     z-index: 1;
-  }
+}
   
 
-  .add-button {
+.add-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     color: white;
     z-index: 5;
-  }
+}
+
+.app-icon {
+    margin-top: -5px;
+    margin-right: 3px;
+}
