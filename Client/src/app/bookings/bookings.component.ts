@@ -14,11 +14,11 @@ export interface Booking {
 }
 
 @Component({
-  selector: 'app-reservations',
-  templateUrl: './reservations.component.html',
-  styleUrls: ['./reservations.component.css']
+  selector: 'app-bookings',
+  templateUrl: './bookings.component.html',
+  styleUrls: ['./bookings.component.scss']
 })
-export class ReservationsComponent implements OnInit {
+export class BookingsComponent implements OnInit {
 
   // Booking data
   bookings: Booking[] = [

@@ -8,18 +8,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatInputModule } from '@angular/material/input'; 
+import { MatInputModule } from '@angular/material/input';
 
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
-import { ReservationsComponent } from './reservations/reservations.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationsComponent
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,
