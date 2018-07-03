@@ -14,15 +14,34 @@ mat-toolbar-row {
 mat-drawer-container {
     background-color: #ECEFF1;
     padding: 0px;
+    min-height: 100vh;
 }
 
 mat-drawer {
-    background-color:#CFD8DC;
+    // background-color:#CFD8DC;
+    background-color:white;
     padding: 20px;
     align-items: center;
+    width: 275px;
 }
 
 mat-drawer-content {
     padding: 0px;
     padding-top: 0px;
 }
+
+.custom-button{
+    position: absolute;
+    right: 30px;
+    bottom: 50px;
+    z-index: 1;
+  }
+  
+
+  .add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    z-index: 5;
+  }

@@ -1,5 +1,5 @@
 export class Booking {
-    id: string;
+    _id: string;
     labId: string;
     reason: string;
     name: string;

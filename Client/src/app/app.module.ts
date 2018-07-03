@@ -12,6 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material';
 import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -23,7 +28,7 @@ import { BookingsComponent } from './bookings/bookings.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BookingsComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,10 @@ import { BookingsComponent } from './bookings/bookings.component';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

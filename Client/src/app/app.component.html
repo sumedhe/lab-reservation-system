@@ -10,9 +10,22 @@
 
 <!-- Content Body -->
 <mat-drawer-container>
-    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+    <!-- Sidebar -->
+    <mat-drawer mode="side" opened>
+            <mat-calendar [selected]="selectedDate" (selectedChange)="selectedDate = $event"> </mat-calendar> 
+    </mat-drawer>
+
+    <!-- Content -->
     <mat-drawer-content>
         <app-bookings></app-bookings>
     </mat-drawer-content>
 </mat-drawer-container>
 
+
+<!-- Add button -->
+<span class="add-button">
+    <button mat-fab color="warn">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+    
