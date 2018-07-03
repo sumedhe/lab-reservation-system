@@ -1,7 +1,7 @@
 <mat-tab-group>
   <!-- Tabs for each lab -->
   <mat-tab *ngFor="let lab of labs" [label]="lab.name">
-    <div class="abc">
+    <div class="tab-content">
       <h2>{{ lab.name }}</h2>
       <mat-accordion>
         <mat-expansion-panel *ngFor="let booking of bookings">

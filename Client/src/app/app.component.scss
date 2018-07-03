@@ -1,0 +1,28 @@
+mat-toolbar {
+    margin: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-color: #4285F4;
+    color: white;
+}
+
+mat-toolbar-row {
+    justify-content: space-between;
+}
+
+
+mat-drawer-container {
+    background-color: #ECEFF1;
+    padding: 0px;
+}
+
+mat-drawer {
+    background-color:#CFD8DC;
+    padding: 20px;
+    align-items: center;
+}
+
+mat-drawer-content {
+    padding: 0px;
+    padding-top: 0px;
+}

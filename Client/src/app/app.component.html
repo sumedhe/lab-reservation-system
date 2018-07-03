@@ -1,1 +1,18 @@
-<app-bookings></app-bookings>
+<!-- Top bar -->
+<mat-toolbar >  
+    <mat-toolbar-row>
+        <span>Lab Reservation System</span>
+
+        <button mat-icon-button> <mat-icon>help_outline</mat-icon></button>
+        
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Content Body -->
+<mat-drawer-container>
+    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+    <mat-drawer-content>
+        <app-bookings></app-bookings>
+    </mat-drawer-content>
+</mat-drawer-container>
+

@@ -9,6 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material';
+import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
+
 
 
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -31,6 +35,9 @@ import { BookingsComponent } from './bookings/bookings.component';
     MatTabsModule,
     MatExpansionModule,
     MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
