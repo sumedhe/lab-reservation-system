@@ -11,7 +11,18 @@ export class BookingService {
 
   readonly baseURL = 'http://localhost:4200/api/bookings';
 
+  // Get bookings
+  getBookingList() {
+    return this.http.get(this.baseURL);
+  }
+
+  // Post booking
   postBooking(booking: Booking) {
     return this.http.post(this.baseURL, booking);
+  }
+
+  // Post booking
+  putBooking(booking: Booking) {
+    return this.http.put(this.baseURL, booking);
   }
 }

@@ -30,13 +30,35 @@ export class BookingsComponent implements OnInit {
   constructor(private bookingService: BookingService) { }
 
   ngOnInit() {
+    this.refreshBookingList();
   }
 
+  // Save Booking
   saveBooking(booking: Booking) {
-    console.log(booking);
+    if (booking._id === '') {
+      // New booking
+      this.bookingService.postBooking(booking).subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err.error);
+      });
+    } else {
+      // Update booking
+      this.bookingService.putBooking(booking).subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err.error);
+      });
+    }
 
-    this.bookingService.postBooking(booking).subscribe((res) => {
-      console.log(res);
+  }
+
+  // Refresh Bookings
+  refreshBookingList() {
+    this.bookingService.getBookingList().subscribe((res) => {
+      this.bookings = res as Booking[];
+    }, (err) => {
+      console.log(err);
     });
   }
 
