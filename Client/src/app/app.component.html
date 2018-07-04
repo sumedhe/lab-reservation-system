@@ -16,12 +16,12 @@
 <mat-drawer-container>
     <!-- Sidebar -->
     <mat-drawer mode="side" opened>
-            <mat-calendar [selected]="selectedDate" (selectedChange)="selectedDate = $event"> </mat-calendar> 
+            <mat-calendar [selected]="bookings.selectedDate" (selectedChange)="bookings.changeDate('input', $event); bookings.refreshBookingList($event)"> </mat-calendar>     
     </mat-drawer>
 
     <!-- Content -->
     <mat-drawer-content>
-        <app-bookings></app-bookings>
+        <app-bookings #bookings></app-bookings>
     </mat-drawer-content>
 </mat-drawer-container>
 
@@ -33,3 +33,4 @@
     </button>
 </span>
     
+<button mat-icon-button (click)="bookings.refreshBookingList()"> <mat-icon>help_outline</mat-icon></button>

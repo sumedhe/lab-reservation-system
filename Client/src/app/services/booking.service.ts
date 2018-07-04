@@ -8,12 +8,20 @@ import { Booking } from '../models/booking.model';
 export class BookingService {
 
   constructor(private http: HttpClient) { }
+  bookings: Booking[];
+  refreshBookingListFunction: Function;
 
   readonly baseURL = 'http://localhost:4200/api/bookings/';
 
   // Get bookings
   getBookingList() {
     return this.http.get(this.baseURL);
+  }
+
+  // Get bookings by date
+
+  getBookingListByDate(date: Date) {
+    return this.http.get(this.baseURL + 'bydate/' + date);
   }
 
   // Post booking

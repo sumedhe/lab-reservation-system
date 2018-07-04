@@ -3,6 +3,7 @@ import { Booking } from '../models/booking.model';
 import { BookingService } from '../services/booking.service';
 import { LabService } from '../services/lab.service';
 import { Lab } from '../models/lab.model';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-bookings',
@@ -14,22 +15,26 @@ export class BookingsComponent implements OnInit {
   bookings: Booking[];
   bookingList = new Map<String, Booking[]>();
   labs: Lab[];
-  selected = 'option2';
+  selectedDatePicker: MatDatepickerInputEvent<Date>;
+  selectedDate: Date;
 
-  constructor(private bookingService: BookingService, private labService: LabService) { }
+  constructor(private bookingService: BookingService, private labService: LabService) {
+  }
 
   ngOnInit() {
     this.refreshLabList();
-    this.refreshBookingList();
+    this.refreshBookingList(this.selectedDate);
   }
 
   // Save Booking
   saveBooking(booking: Booking) {
+    booking.date = this.selectedDate;
+
     if (booking._id === '') {
       // New booking
       this.bookingService.postBooking(booking).subscribe((res) => {
         console.log(res);
-        this.refreshBookingList();
+        this.refreshBookingList(this.selectedDate);
       }, (err) => {
         console.log(err.error);
       });
@@ -37,7 +42,7 @@ export class BookingsComponent implements OnInit {
       // Update booking
       this.bookingService.putBooking(booking).subscribe((res) => {
         console.log(res);
-        this.refreshBookingList();
+        this.refreshBookingList(this.selectedDate);
       }, (err) => {
         console.log(err.error);
       });
@@ -60,8 +65,9 @@ export class BookingsComponent implements OnInit {
   }
 
   // Refresh Bookings
-  refreshBookingList() {
-    this.bookingService.getBookingList().subscribe((res) => {
+  refreshBookingList(date: Date) {
+    console.log(date);
+    this.bookingService.getBookingListByDate(date).subscribe((res) => {
       this.bookings = res as Booking[];
       this.labs.forEach(lab => {
         this.bookingList.set(lab.name, this.bookings.filter(book => book.labId === lab.name));
@@ -79,5 +85,12 @@ export class BookingsComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+
+  // Change date
+  changeDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.selectedDatePicker = event;
+    this.selectedDate = event.value;
   }
 }

@@ -6,7 +6,7 @@
       <mat-accordion>
         <mat-expansion-panel *ngFor="let booking of bookingList.get(lab.name)">
           <mat-expansion-panel-header>
-            <mat-panel-title> {{ booking.startTime | date:'shortTime' }}   - {{ booking.endTime | date:'shortTime' }} </mat-panel-title>
+            <mat-panel-title> {{ booking.startTime }}   - {{ booking.endTime }} </mat-panel-title>
             <mat-panel-description> {{ booking.reason }} </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -33,13 +33,14 @@
                   <mat-grid-tile>
                     <!-- Start time input -->
                     <mat-form-field>
-                        <input matInput type="time" placeholder="From" value="">
+                        <input matInput type="time" placeholder="From" [(ngModel)]="booking.startTime">
                     </mat-form-field>
+                    {{ mydate }}
                   </mat-grid-tile>
                   <mat-grid-tile>
                     <!-- End time input -->
                     <mat-form-field>
-                          <input matInput type="time" placeholder="To" value="">
+                          <input matInput type="time" placeholder="To" [(ngModel)]="booking.endTime">
                     </mat-form-field><br>
                   </mat-grid-tile>
                 </mat-grid-list>
@@ -63,4 +64,4 @@
 </mat-tab-group>
 
 
-  
+<button mat-raised-button color="warn" (click)="bookingService.test()">REFRESH</button>
