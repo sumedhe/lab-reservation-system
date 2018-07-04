@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
         if (!err) {
             res.send(docs)
         } else {
-            console.log("Error in retrieving Bookings : " + JSON.stringify(err, undefined, 2))
+            console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
         }
     })
 })
@@ -26,7 +27,8 @@ router.get('/:id', (req, res) => {
         if (!err) {
             res.send(docs)
         } else {
-            console.log("Error in finding books : " + JSON.stringify(err, undefined, 2))
+            console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
         }
     })
 })
@@ -42,11 +44,14 @@ router.post('/', (req, res) => {
         status    : req.body.status
     });
 
+    // Check for time conflicts
+
     booking.save((err, doc) => {
         if (!err){
             res.send(doc);
         } else {
             console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
         }
     })
 })
@@ -70,7 +75,8 @@ router.put('/:id', (req, res) => {
         if (!err) {
             res.send(doc)
         } else {
-            console.log("Error in Booking update : " + JSON.stringify(err, undefined, 2))
+            console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
         }
     })
 
@@ -86,7 +92,8 @@ router.delete('/:id', (req, res) => {
         if (!err) {
             res.send(doc)
         } else {
-            console.log("Error in Booking delete : " + JSON.stringify(err, undefined, 2))
+            console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
         }
     })
 })
