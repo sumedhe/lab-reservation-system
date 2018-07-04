@@ -14,10 +14,7 @@ export interface Lab {
 export class BookingsComponent implements OnInit {
 
   // Booking data
-  bookings: Booking[] = [
-    { _id: '', labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
-    { _id: '', labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
-  ];
+  bookings: Booking[];
 
   // Labs data
   labs: Lab[] = [
@@ -50,7 +47,7 @@ export class BookingsComponent implements OnInit {
         console.log(err.error);
       });
     }
-
+    this.refreshBookingList();
   }
 
   // Refresh Bookings
@@ -60,6 +57,20 @@ export class BookingsComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  deleteBooking(booking: Booking) {
+    if (confirm('Are you sure, you want to delete the reservation?') === true) {
+      this.bookingService.deleteBooking(booking).subscribe((res) => {
+        console.log('Deleted');
+        const index: number = this.bookings.indexOf(booking);
+        if (index !== -1) {
+            this.bookings.splice(index, 1);
+        }
+      }, (err) => {
+        console.log(err);
+      });
+    }
   }
 
 }

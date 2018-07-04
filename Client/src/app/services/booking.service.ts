@@ -9,7 +9,7 @@ export class BookingService {
 
   constructor(private http: HttpClient) { }
 
-  readonly baseURL = 'http://localhost:4200/api/bookings';
+  readonly baseURL = 'http://localhost:4200/api/bookings/';
 
   // Get bookings
   getBookingList() {
@@ -23,6 +23,11 @@ export class BookingService {
 
   // Post booking
   putBooking(booking: Booking) {
-    return this.http.put(this.baseURL, booking);
+    return this.http.put(this.baseURL + booking._id, booking);
+  }
+
+  // Delete booking
+  deleteBooking(booking: Booking) {
+    return this.http.delete(this.baseURL + booking._id);
   }
 }
