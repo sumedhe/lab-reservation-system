@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Booking } from '../models/booking.model';
 import { BookingService } from '../services/booking.service';
 import { LabService } from '../services/lab.service';
-
-export interface Lab {
-  name: string;
-}
+import { Lab } from '../models/lab.model';
 
 @Component({
   selector: 'app-bookings',
@@ -15,13 +12,15 @@ export interface Lab {
 export class BookingsComponent implements OnInit {
 
   bookings: Booking[];
+  bookingList = new Map<String, Booking[]>();
   labs: Lab[];
+  selected = 'option2';
 
   constructor(private bookingService: BookingService, private labService: LabService) { }
 
   ngOnInit() {
-    this.refreshBookingList();
     this.refreshLabList();
+    this.refreshBookingList();
   }
 
   // Save Booking
@@ -64,6 +63,10 @@ export class BookingsComponent implements OnInit {
   refreshBookingList() {
     this.bookingService.getBookingList().subscribe((res) => {
       this.bookings = res as Booking[];
+      this.labs.forEach(lab => {
+        this.bookingList.set(lab.name, this.bookings.filter(book => book.labId === lab.name));
+      });
+      console.log(this.bookingList);
     }, (err) => {
       console.log(err);
     });

@@ -1,6 +1,8 @@
 .tab-content {
     background-color: #FAFAFA;
     padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 h2 {
@@ -24,4 +26,14 @@ textarea {
 
 button {
     margin: 5px;
+}
+
+mat-form-field {
+    width: 100%;
+    padding: 10px;
+}
+
+.booking-content {
+    // padding-left: 10%;
+    // padding-right: 10%;
 }
