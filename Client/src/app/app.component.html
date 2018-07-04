@@ -6,9 +6,6 @@
             <button mat-icon-button> <mat-icon class="app-icon">account_balance</mat-icon></button>
                 <span>Lab Reservation System</span>
             </span>
-
-        <button mat-icon-button> <mat-icon>help_outline</mat-icon></button>
-        
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -16,7 +13,7 @@
 <mat-drawer-container>
     <!-- Sidebar -->
     <mat-drawer mode="side" opened>
-            <mat-calendar [selected]="bookings.selectedDate" (selectedChange)="bookings.changeDate('input', $event); bookings.refreshBookingList($event)"> </mat-calendar>     
+            <mat-calendar [selected]="bookings.selectedDatePicker" (selectedChange)="bookings.changeDate('input', $event); bookings.refreshBookingList($event)"> </mat-calendar>     
     </mat-drawer>
 
     <!-- Content -->
@@ -28,9 +25,8 @@
 
 <!-- Add button -->
 <span class="add-button">
-    <button mat-fab color="warn">
+    <button mat-fab color="warn" (click)="bookings.addNewBooking()">
         <mat-icon>add</mat-icon>
     </button>
 </span>
     
-<button mat-icon-button (click)="bookings.refreshBookingList()"> <mat-icon>help_outline</mat-icon></button>

@@ -4,8 +4,9 @@ var Booking = mongoose.model('Booking', {
     labId    : { type: String },
     reason   : { type: String },
     name     : { type: String },
-    startTime: { type: Date },
-    endTime  : { type: Date},
+    date     : { type: String },
+    startTime: { type: String },
+    endTime  : { type: String},
     status   : { type: String }
 })
 

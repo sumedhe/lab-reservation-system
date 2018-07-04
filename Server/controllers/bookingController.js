@@ -6,7 +6,20 @@ var { Booking } = require('../models/booking');
 
 // List all bookings
 router.get('/', (req, res) => {
-    Booking.find((err, docs) => {
+    Booking.find( (err, docs) => {
+        if (!err) {
+            res.send(docs)
+        } else {
+            console.log("Error in Booking save : " + JSON.stringify(err, undefined, 2))
+            res.status(400).send(JSON.stringify(err, undefined, 2));
+        }
+    })
+})
+
+// List all bookings
+router.get('/bydate/:date', (req, res) => {
+    console.log(req.params.date)
+    Booking.find({date: req.params.date}, (err, docs) => {
         if (!err) {
             res.send(docs)
         } else {
@@ -35,10 +48,12 @@ router.get('/:id', (req, res) => {
 
 // Create new booking
 router.post('/', (req, res) => {
+    console.log('xxx' + req.body.date)
     var booking = new Booking({
         labId     : req.body.labId,
         reason    : req.body.reason,
         name      : req.body.name,
+        date      : req.body.date,
         startTime : req.body.startTime,
         endTime   : req.body.endTime,
         status    : req.body.status
@@ -66,6 +81,7 @@ router.put('/:id', (req, res) => {
         labId     : req.body.labId,
         reason    : req.body.reason,
         name      : req.body.name,
+        date      : req.body.date,
         startTime : req.body.startTime,
         endTime   : req.body.endTime,
         status    : req.body.status

@@ -3,7 +3,7 @@ export class Booking {
     labId: string;
     reason: string;
     name: string;
-    date: Date;
+    date: string;
     startTime: string;
     endTime: string;
     status: string;
