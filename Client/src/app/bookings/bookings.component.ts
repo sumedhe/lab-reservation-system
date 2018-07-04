@@ -6,6 +6,9 @@ import { Lab } from '../models/lab.model';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { MatTabChangeEvent } from '@angular/material';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
@@ -94,7 +97,6 @@ export class BookingsComponent implements OnInit {
   changeDate(type: string, event: MatDatepickerInputEvent<Date>) {
     this.selectedDatePicker = event;
     this.selectedDate = event;
-    console.log('xx' + this.selectedDate);
   }
 
   // Change tab
@@ -105,11 +107,18 @@ export class BookingsComponent implements OnInit {
   // Add new booking
   addNewBooking() {
     console.log(this.selectedDate.toDateString());
+    // Validate date
+    const today = new Date();
+    today.setDate(3);
+    if (this.selectedDate < today) {
+      alert('The date is passed!');
+      return;
+    }
     const booking = new Booking();
     booking._id = '';
     booking.labId = this.selectedLab;
     booking.reason = '(New reservation)';
-    booking.name = 'Sumedhe';
+    booking.name = 'Sumedhe Dissanayake';
     booking.date = this.selectedDate.toDateString();
     booking.startTime = '08:00';
     booking.endTime = '10:00';
@@ -132,7 +141,23 @@ export class BookingsComponent implements OnInit {
     console.log(bookings);
   }
 
-  test(name: string) {
-    console.log(name);
+  downloadReport() {
+    const doc = new jsPDF();
+      const col = ['Lab', 'Booked by', 'Reason', 'From', 'To'];
+
+      doc.page = 1;
+
+      let rows = [];
+
+      this.bookings.forEach(e => {
+       const temp = [e.labId, e.name, e.reason, e.startTime, e.endTime];
+       rows.push(temp);
+      });
+
+    doc.autoTable(col, rows, { startY: 20 });
+    doc.text('Reservation report ' + this.selectedDate.toDateString() , 10, 10);
+
+   doc.page ++;
+   doc.save('Report of ' + this.selectedDate.toDateString() + '.pdf');
   }
 }

@@ -6,6 +6,13 @@
             <button mat-icon-button> <mat-icon class="app-icon">account_balance</mat-icon></button>
                 <span>Lab Reservation System</span>
             </span>
+            <div>
+                <span class="login-name">{{ username }}</span>
+                <button mat-icon-button> <mat-icon>arrow_drop_down</mat-icon></button>
+                <!-- <button mat-stroked-button color="primary" >Logout</button>
+                <button mat-button color="primary">Primary</button>
+                <button mat-raised-button color="primary"></button> -->
+            </div>
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -14,7 +21,11 @@
     <!-- Sidebar -->
     <mat-drawer mode="side" opened>
             <mat-calendar [selected]="bookings.selectedDatePicker" (selectedChange)="bookings.changeDate('input', $event); bookings.refreshBookingList($event)"> </mat-calendar>     
-    </mat-drawer>
+    
+            <button class="download-button" mat-stroked-button color="primary"  (click)="bookings.downloadReport()">Generate Report</button>
+
+
+        </mat-drawer>
 
     <!-- Content -->
     <mat-drawer-content>
