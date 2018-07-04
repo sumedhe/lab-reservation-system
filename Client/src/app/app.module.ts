@@ -17,6 +17,7 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -45,6 +46,7 @@ import { BookingsComponent } from './bookings/bookings.component';
     MatNativeDateModule,
     MatDialogModule,
     MatSelectModule,
+    HttpClientModule,
 
     FormsModule, ReactiveFormsModule
   ],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../models/booking.model';
+import { BookingService } from '../services/booking.service';
 
 export interface Lab {
   name: string;
@@ -26,13 +27,17 @@ export class BookingsComponent implements OnInit {
     { name: 'Mini Auditorium'},
   ];
 
-  constructor() { }
+  constructor(private bookingService: BookingService) { }
 
   ngOnInit() {
   }
 
   saveBooking(booking: Booking) {
     console.log(booking);
+
+    this.bookingService.postBooking(booking).subscribe((res) => {
+      console.log(res);
+    });
   }
 
 }
