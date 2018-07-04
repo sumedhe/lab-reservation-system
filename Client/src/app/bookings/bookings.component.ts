@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../models/booking.model';
 import { BookingService } from '../services/booking.service';
+import { LabService } from '../services/lab.service';
 
 export interface Lab {
   name: string;
@@ -13,21 +14,14 @@ export interface Lab {
 })
 export class BookingsComponent implements OnInit {
 
-  // Booking data
   bookings: Booking[];
+  labs: Lab[];
 
-  // Labs data
-  labs: Lab[] = [
-    { name: 'W001'},
-    { name: 'W002'},
-    { name: '4th Floor'},
-    { name: 'Mini Auditorium'},
-  ];
-
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService, private labService: LabService) { }
 
   ngOnInit() {
     this.refreshBookingList();
+    this.refreshLabList();
   }
 
   // Save Booking
@@ -36,6 +30,7 @@ export class BookingsComponent implements OnInit {
       // New booking
       this.bookingService.postBooking(booking).subscribe((res) => {
         console.log(res);
+        this.refreshBookingList();
       }, (err) => {
         console.log(err.error);
       });
@@ -43,11 +38,26 @@ export class BookingsComponent implements OnInit {
       // Update booking
       this.bookingService.putBooking(booking).subscribe((res) => {
         console.log(res);
+        this.refreshBookingList();
       }, (err) => {
         console.log(err.error);
       });
     }
-    this.refreshBookingList();
+  }
+
+  // Delete a booking
+  deleteBooking(booking: Booking) {
+    if (confirm('Are you sure, you want to delete the reservation?') === true) {
+      this.bookingService.deleteBooking(booking).subscribe((res) => {
+        console.log('Deleted');
+        const index: number = this.bookings.indexOf(booking);
+        if (index !== -1) {
+          this.bookings.splice(index, 1);
+        }
+      }, (err) => {
+        console.log(err);
+      });
+    }
   }
 
   // Refresh Bookings
@@ -59,18 +69,12 @@ export class BookingsComponent implements OnInit {
     });
   }
 
-  deleteBooking(booking: Booking) {
-    if (confirm('Are you sure, you want to delete the reservation?') === true) {
-      this.bookingService.deleteBooking(booking).subscribe((res) => {
-        console.log('Deleted');
-        const index: number = this.bookings.indexOf(booking);
-        if (index !== -1) {
-            this.bookings.splice(index, 1);
-        }
-      }, (err) => {
-        console.log(err);
-      });
-    }
+  // Refresh Lab list
+  refreshLabList() {
+    this.labService.getLabList().subscribe((res) => {
+      this.labs = res as Lab[];
+    }, (err) => {
+      console.log(err);
+    });
   }
-
 }

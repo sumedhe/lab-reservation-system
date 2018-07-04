@@ -27,7 +27,7 @@ import { BookingsComponent } from './bookings/bookings.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BookingsComponent
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,
