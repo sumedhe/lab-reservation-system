@@ -10,39 +10,41 @@
             <mat-panel-description> {{ booking.reason }} </mat-panel-description>
           </mat-expansion-panel-header>
 
-          <!-- Booking form -->
-          <form class="example-form">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Your name" disabled value="Sumedhe Dissanayake">
-              </mat-form-field><br>
+          <!-- Name input -->
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" placeholder="Your name" [(ngModel)]="booking.name">
+          </mat-form-field><br>
 
-              <mat-form-field class="example-full-width">
-                  <mat-select placeholder="Lab/Hall">
-                    <mat-option *ngFor="let lab of labs" [value]="lab.name">{{ lab.name }}</mat-option>
-                  </mat-select>
+          <!-- Lab name -->
+          <mat-form-field class="example-full-width">
+              <mat-select placeholder="Lab/Hall">
+                <mat-option *ngFor="let lab of labs" >{{ lab.name }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <!-- Reason input -->
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Reason" minRows="6" [(ngModel)]="booking.reason"></textarea>
+          </mat-form-field><br>
+
+          <table > 
+            <!-- Start time input -->
+            <td class="example-full-width">
+              <mat-form-field>
+                  <input matInput placeholder="From" value="">
               </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Reason" minRows="6"></textarea>
+            </td>
+            <!-- End time input -->
+            <td class="example-full-width">
+              <mat-form-field>
+                    <input matInput placeholder="To" value="">
               </mat-form-field><br>
+            </td>
+          </table>
 
-              <table > 
-                <td class="example-full-width">
-                  <mat-form-field>
-                      <input matInput placeholder="From" value="">
-                  </mat-form-field>
-                </td>
-                <td class="example-full-width">
-                  <mat-form-field>
-                        <input matInput placeholder="To" value="">
-                  </mat-form-field><br>
-                </td>
-              </table>
+          <button mat-raised-button color="primary" (click)="saveBooking(booking)">Save</button>
+          <button mat-raised-button color="primary">Cancel</button>
 
-              <button mat-raised-button color="primary">Save</button>
-              <button mat-raised-button color="primary">Cancel</button>
-
-            </form>
 
         </mat-expansion-panel>
       </mat-accordion>

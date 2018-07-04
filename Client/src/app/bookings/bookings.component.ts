@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Booking } from '../models/booking.model';
 
 export interface Lab {
   name: string;
-}
-
-export interface Booking {
-  labId: string;
-  reason: string;
-  name: string;
-  startTime: Date;
-  endTime: Date;
-  status: string;
 }
 
 @Component({
@@ -22,8 +14,8 @@ export class BookingsComponent implements OnInit {
 
   // Booking data
   bookings: Booking[] = [
-    { labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
-    { labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
+    { _id: '', labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
+    { _id: '', labId: '0001', reason: 'My Reason', name: 'Sumedhe', startTime: new Date(), endTime: new Date(), status: 'PENDING'},
   ];
 
   // Labs data
@@ -37,6 +29,10 @@ export class BookingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  saveBooking(booking: Booking) {
+    console.log(booking);
   }
 
 }

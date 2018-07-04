@@ -16,9 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -46,7 +44,9 @@ import { BookingsComponent } from './bookings/bookings.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+
+    FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
