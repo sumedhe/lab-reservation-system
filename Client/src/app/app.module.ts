@@ -23,13 +23,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { BookingsComponent } from './bookings/bookings.component';
-import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookingsComponent,
-    CalendarComponent,
   ],
   imports: [
     BrowserModule,
